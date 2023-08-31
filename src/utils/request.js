@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Message } from '@arco-design/web-vue';
-import { useUserStore } from '../store/userInfo'
+import { useUserStore } from '../store/userInfo';
 
 // create an axios instance
 const service = axios.create({
@@ -16,7 +16,7 @@ service.interceptors.request.use(
     // 设置请求头部 Authorization
     if (store.token) {
       config.headers['Authorization'] = 'Bearer ' + store.token;
-      config.headers['Content-Type'] = 'application/json'
+      config.headers['Content-Type'] = 'application/json';
     }
     return config;
   },
@@ -38,7 +38,7 @@ service.interceptors.response.use(
     if (code === 401) {
       Message.error({
         content: 'Token 已过期, 请重新登陆',
-        duration: 3000
+        duration: 3000,
       });
       // 重定向路由到登陆页面
       store.userLogout();
@@ -47,8 +47,8 @@ service.interceptors.response.use(
     } else {
       Message.error({
         content: error.message,
-        duration: 3000
-      })
+        duration: 3000,
+      });
       return Promise.reject(msg);
     }
   }
