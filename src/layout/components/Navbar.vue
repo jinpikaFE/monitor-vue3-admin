@@ -54,6 +54,7 @@ const handleDarkTheme = () => {
     darkTheme.value = false;
   }
 };
+handleDarkTheme()
 </script>
 
 <style lang="scss" scoped>
